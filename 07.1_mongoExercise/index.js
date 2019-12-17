@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
+
+console.log("Running")
+
 mongoose.connect('mongodb://localhost/mongo-exercises')
     .then(() => { console.log('Connected to DB') })
-    .catch((err) => { console.err("Error caught: ", err) });
+    .catch((err) => { console.error("Error caught: ", err) });
 
 const courseSchema = new mongoose.Schema({
     _id: String,
@@ -30,8 +33,8 @@ async function updateCourse(id) {
     const course = await courses.findById(id);
     if (!course) { console.log("course not found"); return; }
 
-    course.isPublished = true;
-    course.author = 'mE';
+    course.isPublished = false;
+    course.author = 'hehe xd';
 
     const result = await course.save();
     console.log(result);
